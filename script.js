@@ -4,6 +4,17 @@ const sound = document.getElementById("sound");
 const btn = document.getElementById("search-btn");
 
 btn.addEventListener("click", ()=> {
+    myFunction();
+});
+function playSound(){
+    sound.play();
+}
+document.addEventListener("keyup", function(event) {
+    if (event.key === 'Enter') {
+        myFunction();
+    }
+});
+function myFunction() {
     let inpWord = document.getElementById("inp-word").value;
     console.log(inpWord);
     fetch(`${url}${inpWord}`)
@@ -36,7 +47,4 @@ btn.addEventListener("click", ()=> {
     .catch(()=>{
         result.innerHTML = `<h3 class="error">No Definitions Found</h3>`
     })
-});
-function playSound(){
-    sound.play();
-}
+  }
